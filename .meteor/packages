@@ -24,3 +24,5 @@ accounts-facebook
 accounts-twitter
 service-configuration
 iron:router
+less
+nemo64:bootstrap

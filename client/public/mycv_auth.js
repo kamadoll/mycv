@@ -1,4 +1,4 @@
-Template.home.events({
+Template.navbar.events({
     'click .btn-logout':function(){
         Meteor.logout();
     }
