@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "description": "MY CV Web App",
   "scripts": {
-    "start": "meteor --settings settings.json"
+    "start": "meteor --settings settings-development.json"
   }
 }
