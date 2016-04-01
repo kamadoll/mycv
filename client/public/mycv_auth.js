@@ -39,6 +39,10 @@ Template.login.events({
             }
         });
     },
+    'click .btn-register':function(event){
+        event.preventDefault();
+        Router.go('/register');
+    },
     'click .btn-facebook':function(event){
         event.preventDefault();
         Meteor.loginWithFacebook(function(err){

@@ -1,72 +1,82 @@
 <template name="register">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <form class="register-form">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3>Registration</h3>
-                    </div>
-                    <div class="panel-body">
-                        {{#if error}}<div class="alert alert-danger" role="alert"> {{error}}</div>{{/if}}
-                        <div class="form-group col-lg-12">
-                            <label>Email</label>
-                            <input type="email"  class="form-control" id="email" value="">
-                        </div>
-
-                        <div class="form-group col-lg-6">
-                            <label>Name</label>
-                            <input type="text" name="" class="form-control" id="firstname" value="">
-                        </div>
-
-                        <div class="form-group col-lg-6">
-                            <label>Last Name</label>
-                            <input type="text" name="" class="form-control" id="lastname" value="">
-                        </div>
-
-                        <div class="form-group col-lg-12">
-                            <label>Password</label>
-                            <input type="password" name="" class="form-control" id="password" value="">
-                        </div>
-                    </div>
-                    <div class="panel-footer">
-                        <button type="submit" class="btn btn-primary">Register</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
+  {{> quickForm collection="Meteor.users" id="register" type="insert"}}
 </template>
 
 <template name="login">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+  <form class="login-form">
+    <fieldset>
 
-            <form class="login-form">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3>Login</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="form-group col-lg-12">
-                            <label>Email</label>
-                            <input type="email"  class="form-control" id="email" value="">
-                        </div>
-                        <div class="form-group col-lg-12">
-                            <label>Password</label>
-                            <input type="password" name="" class="form-control" id="password" value="">
-                        </div>
-                    </div>
-                    <div class="panel-footer">
-                        <button type="submit" class="btn btn-primary">Login</button>
-                        <button  class="btn btn-primary btn-facebook">Facebook Login</button>
-                        <button  class="btn btn-primary btn-twitter">Twitter Login</button>
-                    </div>
-                </div>
-            </form>
+      <!-- Text input-->
+      <div class="form-group">
+        <div class="col-md-4">
+          <input id="username" name="username" type="text" placeholder="Enter Username" class="form-control input-md" required="">
+
         </div>
-    </div>
+      </div>
+
+      <!-- Password input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="password"></label>
+        <div class="col-md-4">
+          <input id="password" name="password" type="password" placeholder="Enter password" class="form-control input-md" required="">
+
+        </div>
+      </div>
+
+      <!-- Button (Double) -->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="loginbtn"></label>
+        <div class="col-md-8">
+          <button id="loginbtn" name="loginbtn" class="btn btn-primary">Login</button>
+        </div>
+      </div>
+    </fieldset>
+    <hr/>
+  </form>
+  <form class="login-form">
+    <fieldset>
+      <!-- Button (Double) -->
+      <div class="form-group">
+        <label class="col-md-2 control-label" for="loginbtn"></label>
+        <div class="col-md-4">
+          <button id="registerbtn" name="registerbtn" class="btn btn-inverse btn-register">Register</button>
+          <button id="facebookbtn" name="facebookbtn" class="btn btn-primary btn-facebook">Facebook</button>
+          <button id="twitterbtn" name="twitterbtn" class="btn btn-primary btn-twitter">Twitter</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+  <!--
+  <div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
+  <form class="login-form">
+  <div class="panel panel-default">
+  <div class="panel-heading">
+  <h3>Login</h3>
+</div>
+<div class="panel-body">
+<div class="form-group col-lg-12">
+<label>Email</label>
+<input type="email"  class="form-control" id="email" value="">
+</div>
+<div class="form-group col-lg-12">
+<label>Password</label>
+<input type="password" name="" class="form-control" id="password" value="">
+</div>
+</div>
+<div class="panel-footer">
+<button type="submit" class="btn btn-primary">Login</button>
+<button  class="btn btn-primary btn-facebook">Facebook Login</button>
+<button  class="btn btn-primary btn-twitter">Twitter Login</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+-->
 </template>
 
 <template name="home">
-    <h1>Welcome {{currentUser.profile.name}}</h1>
+  <h1>Welcome {{currentUser.profile.name}}</h1>
 </template>
