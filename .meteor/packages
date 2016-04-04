@@ -31,3 +31,6 @@ standard-minifier-css
 standard-minifier-js
 mrt:jquery-easing
 matb33:bootstrap-full
+shmck:meteor-social-buttons
+tanis:bootstrap-social
+accounts-google

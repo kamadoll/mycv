@@ -1,29 +1,11 @@
 Template.navbar.events({
     'click .btn-logout':function(){
         Meteor.logout();
+        Router.go('/logout');
     }
 });
 
-Template.register.events({
-    'submit .register-form': function (event) {
 
-        event.preventDefault();
-
-
-        var email = event.target.email.value;
-        var password = event.target.password.value;
-        var firstname = event.target.firstname.value;
-        var lastname = event.target.lastname.value;
-
-        var user = {'email':email,password:password,profile:{name:firstname +" "+lastname}};
-
-        Accounts.createUser(user,function(err){
-            if(!err) {
-                Router.go('/');
-            }
-        });
-    }
-});
 
 Template.login.events({
     'submit .login-form': function (event) {
@@ -56,6 +38,16 @@ Template.login.events({
     'click .btn-twitter':function(event){
         event.preventDefault();
         Meteor.loginWithTwitter(function(err){
+            if(!err) {
+                Router.go('/');
+            }
+            else
+              console.log("skerr: "+ err);
+        });
+    },
+    'click .btn-google':function(event){
+        event.preventDefault();
+        Meteor.loginWithGoogle(function(err){
             if(!err) {
                 Router.go('/');
             }

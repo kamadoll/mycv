@@ -8,5 +8,9 @@
     Houston.add_collection(Houston._admins);
 
     // code to run on server at startup
-      Modules.server.configureServices();
+    Modules.server.configureServices();
+
+    Meteor.publish('users', function() {
+        return Meteor.users.find();
+    });
   });

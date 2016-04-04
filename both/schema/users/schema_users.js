@@ -25,20 +25,7 @@ UserSchema.UserProfile = new SimpleSchema({
     },
     gender: {
         type: String,
-        allowedValues: ['Male', 'Female'],
-        optional: true
-    },
-    organization : {
-        type: String,
-        optional: true
-    },
-    website: {
-        type: String,
-        regEx: SimpleSchema.RegEx.Url,
-        optional: true
-    },
-    bio: {
-        type: String,
+        allowedValues: ['Male', 'Female','Other','Unspecified'],
         optional: true
     },
     country: {
@@ -79,7 +66,23 @@ UserSchema.User = new SimpleSchema({
         blackbox: true
     },
     createdAt: {
-        type: Date
+        type: Date,
+        label: "Date profile created",
+        denyUpdate: true,
+        autoValue: function() {
+          if ( this.isInsert ) {
+            return new Date;
+          }
+        }
+    },
+    "updated": {
+      type: Date,
+      label: "Date profile updated",
+      autoValue: function() {
+        if ( this.isUpdate ) {
+          return new Date;
+        }
+      }
     },
     profile: {
         type: UserSchema.UserProfile,
