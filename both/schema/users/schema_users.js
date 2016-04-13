@@ -15,10 +15,15 @@ UserSchema.UserCountry = new SimpleSchema({
 UserSchema.UserProfile = new SimpleSchema({
     name: {
         type: String,
-        label: "First Mame",
+        label: "Full Name",
         optional: true
     },
-    lastName: {
+    fname: {
+      type: String,
+      label: "First Name",
+      optional: true
+    },
+    lname: {
         type: String,
         label: "Last Name",
         optional: true
