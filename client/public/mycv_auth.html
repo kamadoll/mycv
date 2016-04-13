@@ -1,14 +1,14 @@
 <template name="register">
-    <!--{{> quickForm collection="Meteor.users" id="register" type="insert"}}-->
-  {{#autoForm collection="Meteor.users" id="register" type="insert"}}
+  <!--  {{> quickForm collection="Meteor.users" id="register" type="insert"}}-->
+  {{#autoForm collection="Meteor.users" id="registerUser" type="insert"}}
     <fieldset>
       <legend>Register</legend>
       {{> afQuickField name='username'}}
       {{> afQuickField name='password'}}
-      {{> afQuickField name='profile.firstName'}}
+      {{> afQuickField name='profile.name'}}
       {{> afQuickField name='profile.lastName'}}
     </fieldset>
-    <button type="submit" class="btn btn-primary">Insert</button>
+    <button type="submit" class="btn btn-primary btn-submit">Insert</button>
   {{/autoForm}}
 </template>
 

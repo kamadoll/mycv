@@ -1,5 +1,7 @@
 UserSchema = {};
 
+SimpleSchema.debug = true;
+
 UserSchema.UserCountry = new SimpleSchema({
     name: {
         type: String
@@ -11,16 +13,19 @@ UserSchema.UserCountry = new SimpleSchema({
 });
 
 UserSchema.UserProfile = new SimpleSchema({
-    firstName: {
+    name: {
         type: String,
+        label: "First Mame",
         optional: true
     },
     lastName: {
         type: String,
+        label: "Last Name",
         optional: true
     },
     birthday: {
         type: Date,
+        label: "Date of birth",
         optional: true
     },
     gender: {
@@ -37,20 +42,14 @@ UserSchema.UserProfile = new SimpleSchema({
 UserSchema.User = new SimpleSchema({
     username: {
         type: String,
-        // For accounts-password, either emails or username is required, but not both. It is OK to make this
-        // optional here because the accounts-password package does its own validation.
-        // Third-party login packages may not require either. Adjust this schema as necessary for your usage.
+        regEx: /^[a-z0-9A-Z_]{3,15}$/,
         optional: true
     },
     emails: {
-        type: Array,
-        // For accounts-password, either emails or username is required, but not both. It is OK to make this
-        // optional here because the accounts-password package does its own validation.
-        // Third-party login packages may not require either. Adjust this schema as necessary for your usage.
+        type: [Object],
+        // this must be optional if you also use other login services like facebook,
+        // but if you use only accounts-password, then it can be required
         optional: true
-    },
-    "emails.$": {
-        type: Object
     },
     "emails.$.address": {
         type: String,
@@ -59,11 +58,14 @@ UserSchema.User = new SimpleSchema({
     "emails.$.verified": {
         type: Boolean
     },
-    // Use this registered_emails field if you are using splendido:meteor-accounts-emails-field / splendido:meteor-accounts-meld
-    registered_emails: {
-        type: [Object],
-        optional: true,
-        blackbox: true
+    password: {
+      type: String,
+      autoform: {
+        afFieldInput: {
+          type: 'password'
+        }
+      },
+      optional: true
     },
     createdAt: {
         type: Date,
@@ -75,14 +77,15 @@ UserSchema.User = new SimpleSchema({
           }
         }
     },
-    "updated": {
+    updatedAt: {
       type: Date,
       label: "Date profile updated",
       autoValue: function() {
         if ( this.isUpdate ) {
           return new Date;
         }
-      }
+      },
+      optional: true
     },
     profile: {
         type: UserSchema.UserProfile,

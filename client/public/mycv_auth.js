@@ -12,13 +12,14 @@ Template.login.events({
         event.preventDefault();
 
 
-        var email = event.target.email.value;
+        var email = event.target.username.value;
         var password = event.target.password.value;
-
+        console.log("Login with username:["+email+"]["+password+"]")
         Meteor.loginWithPassword(email,password,function(err){
             if(!err) {
                 Router.go('/');
             }
+            else console.log(err);
         });
     },
     'click .btn-register':function(event){
